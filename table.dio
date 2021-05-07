@@ -1,6 +1,6 @@
 <mxfile>
     <diagram id="nFpDzKoS7L3YfPcbsrWe" name="ページ1">
-        <mxGraphModel dx="879" dy="567" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+        <mxGraphModel dx="843" dy="680" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -39,10 +39,10 @@
                         <mxRectangle x="550" y="540" width="80" height="26" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="66" value="・postal_code          (string型、NOT NULL)&#10;・prefectures           (string型、NOT NULL)&#10;・city                       (string型、NOT NULL)&#10;・house_number     (string型、NOT NULL)&#10;・building                 (string型)&#10;・phone_number     (string型、NOT NULL)&#10;・purchase              (references型、NOT NULL、外部キー制約)" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=14;spacingBottom=4;spacingTop=1;" parent="65" vertex="1">
+                <mxCell id="66" value="・postal_code          (string型、NOT NULL)&#10;・shipping_area_id  (integer型、NOT NULL)&#10;・city                       (string型、NOT NULL)&#10;・house_number     (string型、NOT NULL)&#10;・building                 (string型)&#10;・phone_number     (string型、NOT NULL)&#10;・purchase              (references型、NOT NULL、外部キー制約)" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=14;spacingBottom=4;spacingTop=1;" parent="65" vertex="1">
                     <mxGeometry y="26" width="420" height="134" as="geometry"/>
                 </mxCell>
-                <mxCell id="67" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERmandOne;startArrow=ERmandOne;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.486;exitY=0.993;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" target="65" edge="1" source="54">
+                <mxCell id="67" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERmandOne;startArrow=ERmandOne;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.486;exitY=0.993;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="54" target="65" edge="1">
                     <mxGeometry width="100" height="100" relative="1" as="geometry">
                         <mxPoint x="555" y="480" as="sourcePoint"/>
                         <mxPoint x="610" y="450" as="targetPoint"/>
