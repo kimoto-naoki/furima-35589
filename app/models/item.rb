@@ -4,4 +4,7 @@ class Item < ApplicationRecord
 
   validates :price, inclusion: { in: 300..9999999 }
   validates :price, fomat: { with: /\A[0-9]+\z/ }
+
+  belongs_to :user
+  has_one_attached :image
 end
