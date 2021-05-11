@@ -130,7 +130,7 @@
       <li class='list'>
         <%= link_to "#" do %>
         <div class='item-img-content'>
-          <%= image_tag "item-sample.png", class: "item-img" %>
+          <%= image_tag item.image, class: "item-img" %>
 
           <%# sold out表示は商品購入機能実装時に行います %>
           <%# <div class='sold-out'>
@@ -144,7 +144,7 @@
             <%= item.item_name %>
           </h3>
           <div class='item-price'>
-            <span><%= item_price %>円<br><%= item.who_cost.name %></span>
+            <span><%= item.price %>円<br><%= item.who_cost.name %></span>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>
@@ -155,7 +155,7 @@
       </li>
       <% end %>
 
-      <% if @item.blank? %>
+      <% if @items.blank? %>
       <li class='list'>
         <%= link_to '#' do %>
         <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
