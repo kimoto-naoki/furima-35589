@@ -3,9 +3,9 @@ function total_price (){
 
   item_price.addEventListener('keyup', () =>{
     const add_tax_price = document.getElementById("add-tax-price");
-    add_tax_price.innerHTML = item_price.value * 0.1;
+    add_tax_price.innerHTML = Math.floor(item_price.value * 0.1);
     const profit = document.getElementById('profit');
-    profit.innerHTML = item_price.value * 0.9;
+    profit.innerHTML = item_price.value - (Math.floor(item_price.value * 0.1));
   });
   
 };

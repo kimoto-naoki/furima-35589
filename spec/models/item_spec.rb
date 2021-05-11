@@ -37,10 +37,22 @@ RSpec.describe Item, type: :model do
         expect(@items.errors.full_messages).to include("Category can't be blank")
       end
 
+      it 'category_idが1では登録できない' do
+        @items.category_id = 1
+        @items.valid?
+        expect(@items.errors.full_messages).to include("Category must be other than 1")
+      end
+
       it 'condition_idが空では登録できない' do
         @items.condition_id = ""
         @items.valid?
         expect(@items.errors.full_messages).to include("Condition can't be blank")
+      end
+
+      it 'condition_idが1では登録できない' do
+        @items.condition_id = 1
+        @items.valid?
+        expect(@items.errors.full_messages).to include("Condition must be other than 1")
       end
 
       it 'who_costが空では登録できない' do
@@ -49,16 +61,34 @@ RSpec.describe Item, type: :model do
         expect(@items.errors.full_messages).to include("Who cost can't be blank")
       end
 
+      it 'who_costが1では登録できない' do
+        @items.who_cost_id = 1
+        @items.valid?
+        expect(@items.errors.full_messages).to include("Who cost must be other than 1")
+      end
+
       it 'shipping_area_idが空では登録できない' do
         @items.shipping_area_id = ""
         @items.valid?
         expect(@items.errors.full_messages).to include("Shipping area can't be blank")
       end
 
+      it 'shipping_area_idが1では登録できない' do
+        @items.shipping_area_id = 1
+        @items.valid?
+        expect(@items.errors.full_messages).to include("Shipping area must be other than 1")
+      end
+
       it 'days_to_ship_idが空では登録できない' do
         @items.days_to_ship_id = ""
         @items.valid?
         expect(@items.errors.full_messages).to include("Days to ship can't be blank")
+      end
+
+      it 'days_to_ship_idが1では登録できない' do
+        @items.days_to_ship_id = 1
+        @items.valid?
+        expect(@items.errors.full_messages).to include("Days to ship must be other than 1")
       end
 
       it 'priceが空では登録できない' do
@@ -79,10 +109,22 @@ RSpec.describe Item, type: :model do
         expect(@items.errors.full_messages).to include("Price is not included in the list")
       end
 
-      it 'priceが全角数字だと登録できない' do
+      it 'priceが全角文字だと登録できない' do
         @items.price = "３００"
         @items.valid?
         expect(@items.errors.full_messages).to include("Price is not included in the list")
+      end
+
+      it 'priceが半角英数混合だと登録できない' do
+        @items.price = "300aaa"
+        @items.valid?
+        expect(@items.errors.full_messages).to include("Price is not a number")
+      end
+
+      it 'priceが半角英語だと登録できない' do
+        @items.price = "aaa"
+        @items.valid?
+        expect(@items.errors.full_messages).to include("Price is not a number")
       end
     end
   end
