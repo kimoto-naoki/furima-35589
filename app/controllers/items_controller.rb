@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index,:show]
-  before_action :set_item, only:[:show, :update]
+  before_action :set_item, only:[:show, :edit, :update]
   before_action :move_to_root, only:[:edit, :update]
 
   def index
@@ -25,7 +25,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    set_item
+    
   end
 
   def update
@@ -36,7 +36,7 @@ class ItemsController < ApplicationController
       render :edit
     end
   end
-  
+
   private
   def item_params
     params.require(:item).permit(
