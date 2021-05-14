@@ -4,13 +4,11 @@ class OrdersController < ApplicationController
 
   def index  
 
-    unless @items.order.blank?
-      return redirect_to root_path
+    if @items.order.blank? && current_user.id != @items.user_id
+      @order_address = OrderAddress.new
+    else
+       redirect_to root_path
     end
-    if current_user.id == @items.user_id
-      return redirect_to root_path
-    end
-    @order_address = OrderAddress.new    
   end
 
   def create
