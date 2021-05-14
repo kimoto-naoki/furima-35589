@@ -23,4 +23,5 @@ class Item < ApplicationRecord
   belongs_to :who_cost
   belongs_to :shipping_area
   belongs_to :days_to_ship
+  has_one :order
 end
