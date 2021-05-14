@@ -25,11 +25,13 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    
+    unless @items.order.blank?
+      return redirect_to root_path
+    end
   end
 
   def update
-    
+
     if @items.update(item_params)
       redirect_to action: :show
     else
@@ -55,7 +57,7 @@ class ItemsController < ApplicationController
 
   def move_to_root
     if current_user.id != Item.find(params[:id]).user_id
-      redirect_to root_path
+      return redirect_to root_path
     end
   end
 end
