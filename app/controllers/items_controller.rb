@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_action :move_to_root, only:[:edit, :update, :destroy]
 
   def index
-    @items = Item.includes(:user).order("created_at DESC")
+    @items = Item.includes(:user,:order).order("created_at DESC")
   end
 
   def new
@@ -25,11 +25,13 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    
+    unless @items.order.blank?
+      return redirect_to root_path
+    end
   end
 
   def update
-    set_item
+
     if @items.update(item_params)
       redirect_to action: :show
     else
@@ -54,8 +56,8 @@ class ItemsController < ApplicationController
   end
 
   def move_to_root
-    if current_user.id != Item.find(params[:id]).user_id
-      redirect_to root_path
+    if current_user.id != @items.user_id
+      return redirect_to root_path
     end
   end
 end

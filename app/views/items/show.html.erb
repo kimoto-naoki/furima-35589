@@ -8,11 +8,13 @@
     </h2>
     <div class="item-img-content">
       <%= image_tag @items.image ,class:"item-box-img" %>
-      <%# sold out表示は購入機能実装時に行います %>
-      <%# <div class="sold-out">
+      
+      <% unless @items.order.blank? %>
+      <div class="sold-out">
         <span>Sold Out!!</span>
-      </div> %>
-      <%# //sold out表示は購入機能実装時に行います %>
+      </div>
+      <% end %>
+      
     </div>
     <div class="item-price-box">
       <span class="item-price">
@@ -23,12 +25,14 @@
       </span>
     </div>
 
-    <% if user_signed_in? && @items.user_id == current_user.id %>
-      <%= link_to "商品の編集", edit_item_path, method: :get, class: "item-red-btn" %>
-      <p class="or-text">or</p>
-      <%= link_to "削除", item_path, method: :delete, class:"item-destroy" %>      
-    <% elsif user_signed_in? && @items.user_id != current_user.id  %>
-      <%= link_to "購入画面に進む", "#" ,class:"item-red-btn"%>
+    <% if user_signed_in? && @items.order.blank? %>
+      <% if @items.user.id == current_user.id %>
+        <%= link_to "商品の編集", edit_item_path, method: :get, class: "item-red-btn" %>
+        <p class="or-text">or</p>
+        <%= link_to "削除", item_path, method: :delete, class:"item-destroy" %>      
+      <% else %>
+        <%= link_to "購入画面に進む", item_orders_path(@items.id), class:"item-red-btn"%>
+      <% end %>
     <% end %>
     
 
