@@ -1,7 +1,8 @@
 <% if model.errors.any? %>
+<% jp_messages = translation(model.errors.full_messages) %>
 <div class="error-alert">
   <ul>
-    <% model.errors.full_messages.each do |message| %>
+    <% jp_messages.each do |message| %>
     <li class='error-message'><%= message %></li>
     <% end %>
   </ul>
