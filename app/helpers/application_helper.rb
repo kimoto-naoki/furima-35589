@@ -2,6 +2,7 @@ module ApplicationHelper
   def translation(messages)
     jp_messages = []
     price_message = ""
+    phone_number_message = ""
     messages.each do |message|
       case message
 
@@ -82,12 +83,44 @@ module ApplicationHelper
         message = "お名前（カナ）は全角カタカナで入力してください"
       when "Birthday can't be blank"
         message = "誕生日を入力してください"
+
+      when "Postal code can't be blank"
+        message = "郵便番号を入力してください"
+      when "Postal code is invalid. Include hyphen(-)"
+        message = "郵便番号はハイフン(-)を入れてください"
+      when "City can't be blank"
+        message = "市区町村を入力してください"
+      when "House number can't be blank"
+        message = "番地を入力してください"
+      when "Phone number can't be blank"
+        phone_number_message = "電話番号を入力してください"
+        next
+      when "Phone number is not a number"
+        if phone_number_message = "電話番号を入力してください"
+          next
+        else
+          phone_number_message = "電話番号は半角数字のみで入力してください"
+        end
+      when "Phone number is too short (minimum is 1 character)"
+        if phone_number_message.present?
+          next
+        else
+          phone_number_message = "電話番号を入力してください"
+        end
+      when "Phone number is too long (maximum is 11 characters)"
+        message = "電話番号は12桁以内で入力してください"
+      when "Token can't be blank"
+        message = "カード情報が正しくありません"
       end
       jp_messages << message
     end 
 
     if price_message.present?
       jp_messages << price_message
+    end
+
+    if phone_number_message.present?
+      jp_messages << phone_number_message
     end
     
     return jp_messages.uniq
